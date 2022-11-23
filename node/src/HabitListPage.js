@@ -4,24 +4,9 @@ import {Get} from './RESTRequest';
 import CreateHabit from './components/CreateHabit';
 
 function HabitListPage(){
-    const [render, setRender] = useState(0); // is this really the best way to do it?
-    function consume(response){
-        console.log("consumed");
-        setRender(prev => prev + 1);
-    }
-
-    return (
-        <div>
-            <div>
-                <CreateHabit onResponse={consume}/>
-            </div>
-            <HabitList />
-        </div>
-    )
-}
-
-function HabitList(){
     const [habitList, setHabitList] = useState();
+    const [habitQueue, setHabitQueue] = useState();
+
     useEffect(() => {
         const fetchInfo = async () => {
             await Get("habit/info")
@@ -33,12 +18,27 @@ function HabitList(){
         }
 
         fetchInfo(); 
-    }, []);
+    }, [habitQueue]);
 
-    if(habitList === undefined) return <p>Loading...</p>
+    function consume(response){
+        setHabitQueue(prev => prev+1);
+    }
 
     return (
-        habitList
+        <div>
+            <div>
+                <CreateHabit onResponse={consume}/>
+            </div>
+            <HabitList habitList={habitList}/>
+        </div>
+    )
+}
+
+function HabitList(properties){
+    if(properties.habitList === undefined) return <p>Loading...</p>
+
+    return (
+        properties.habitList
     )
 }
 
