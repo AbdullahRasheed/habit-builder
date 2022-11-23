@@ -1,0 +1,13 @@
+.form-page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.form-page-content > .BasicForm-form {
+    display: flex;
+    flex-direction: column;
+}

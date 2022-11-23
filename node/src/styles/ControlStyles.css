@@ -1,0 +1,10 @@
+.std-btn {
+    border-radius: 5px;
+    border: 0px;
+    background-color: paleturquoise;
+    padding: 1rem 2.5rem;
+}
+
+.std-btn:hover {
+    cursor: pointer;
+}

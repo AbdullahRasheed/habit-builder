@@ -1,0 +1,10 @@
+.BasicForm-input {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.BasicForm-form > button {
+    margin: 20px;
+}
